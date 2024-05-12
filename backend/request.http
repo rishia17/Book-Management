@@ -1,0 +1,154 @@
+//user registration
+POST http://localhost:5500/user-api/user
+Content-Type: application/json
+
+{
+    "userType":"user",
+    "userName":"ravi1",
+    "password":"ravi",
+    "email":"ravi@gmail.com"
+}
+###
+//admin registration
+POST http://localhost:5500/admin-api/user
+Content-Type: application/json
+
+{
+    "userType":"admin",
+    "userName":"rishi131",
+    "password":"1314",
+    "email":"bhanu@gmail.com"
+}
+
+###
+//login for user
+POST http://localhost:5500/user-api/login
+Content-Type: application/json
+
+{
+    "userType":"user",
+    "userName":"ravi",
+    "password":"ravi"
+}
+
+###
+//login for admin
+POST http://localhost:5500/admin-api/login
+Content-Type: application/json
+
+{
+    "userType":"admin",
+    "userName":"rishi1314",
+    "password":"1314"
+}
+### add new  book
+POST http://localhost:5500/admin-api/new-book
+Content-Type: application/json
+
+{
+    "bookId":"{{$timestamp}}",
+    "title":"Fundamentals of JavaScript 1",
+    "author":"Ravi",
+    "category":"prog2",
+    "imageUrl":"https://cdn.kobo.com/book-images/10bb50a9-26a9-4ead-aca2-e9b3c7595bc4/353/569/90/False/writing-children-s-books-for-dummies-1.jpg",
+    "dateOfCreation":"${{$datetime iso8601}}",
+    "dateOfModification":"${{$datetime iso8601}}",
+    "status":true,
+    "favourites":[]
+
+}
+
+### read all books
+GET http://localhost:5500/user-api/books
+
+### soft delete(update) of an book
+PUT http://localhost:5500/admin-api/books/1715426297002
+Content-Type: application/json
+
+{
+
+      "title": "intro to progamming",
+      "author": "Nolan",
+      "category": "programming",
+      "imageUrl": "https://cdn.kobo.com/book-images/10bb50a9-26a9-4ead-aca2-e9b3c7595bc4/1200/1200/False/writing-children-s-books-for-dummies-1.jpg",
+      "bookId": 1715426297002,
+      "dateOfCreation": "2024-05-11T11:18:17.002Z",
+      "dateOfModification": "2024-05-11T11:18:17.002Z",
+      "status": true
+ }
+
+
+
+### Add favourites
+PUT http://localhost:5500/user-api/add-favourite/rishi10
+Content-Type: application/json
+
+{
+    "title": "intro to c++",
+    "author": "Nolan",
+    "category": "programming",
+    "imageUrl": "https://5.imimg.com/data5/SELLER/Default/2022/10/VD/VR/LA/55453836/whatsapp-image-2022-10-14-at-6-51-19-pm-2-jpeg.jpeg",
+    "bookId": 1715447863759,
+    "dateOfCreation": "2024-05-11T17:17:43.759Z",
+    "dateOfModification": "2024-05-11T17:17:43.759Z",
+    "status": true,
+    "favourites": [
+      "rishi2",
+      "rishi3",
+      "rishi4",
+      "rishi6",
+      "rishi9"
+    ]
+  }
+
+
+
+### edit-books
+PUT http://localhost:5500/admin-api/edit
+Content-Type: application/json
+
+{
+    "bookId":"1715361234",
+    "title":"Fundamentals of JavaScript",
+    "category":"programming",
+    "imageUrl":"https://cdn.kobo.com/book-images/10bb50a9-26a9-4ead-aca2-e9b3c7595bc4/353/569/90/False/writing-children-s-books-for-dummies-1.jpg",
+    "dateOfCreation":"$2024-05-10T17:13:54.026Z",
+    "dateOfModification":"${{$datetime iso8601}}",
+    "status":true
+
+}
+
+### dashboard
+GET http://localhost:5500/admin-api/dashboard
+
+
+
+
+###  favourites
+GET http://localhost:5500/user-api/favourites/rishi7
+
+
+
+###  removefavourites
+PUT http://localhost:5500/user-api/remove-favourite/rishi3
+Content-Type: application/json
+
+{
+    "title": "intro to c++",
+    "author": "Nolan",
+    "category": "programming",
+    "imageUrl": "https://5.imimg.com/data5/SELLER/Default/2022/10/VD/VR/LA/55453836/whatsapp-image-2022-10-14-at-6-51-19-pm-2-jpeg.jpeg",
+    "bookId": 1715447863759,
+    "dateOfCreation": "2024-05-11T17:17:43.759Z",
+    "dateOfModification": "2024-05-11T17:17:43.759Z",
+    "status": true,
+    "favourites": [
+      "rishi2",
+      "rishi3",
+      "rishi4",
+      "rishi5",
+      "rishi6",
+      "rishi9",
+      "rishi10"
+    ]
+}
